@@ -51,6 +51,9 @@ export default function reducer(state = [], action) {
     }
 }
 
+
+/*** Selectors are recommended to be placed near the reducers ***/
+
 export function getFilteredTodos(state, filter) {
     switch (filter) {
         case 'ALL':
