@@ -1,30 +1,38 @@
-import { GET_TODOS, ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_TODO } from '../actions';
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_TODO } from '../actions';
 
 function todoReducer(state = {}, action) {
     switch (action.type) {
+        case ADD_TODO:
+            return {
+                id: action.id,
+                title: action.title,
+                completed: false
+            };
+
         case TOGGLE_TODO:
-            if (state.id !== action.todo.id) {
+            if (state.id !== action.id) {
                 return state;
             }
 
-            return action.todo;
+            return Object.assign({}, state, {
+                completed: !state.completed
+            });
 
         case EDIT_TODO:
-            if (state.id !== action.todo.id) {
+            if (state.id !== action.id) {
                 return state;
             }
 
-            return action.todo;
+            return Object.assign({}, state, {
+                title: action.title
+            });
     }
 }
 
-export default function reducer(state = [], action) {
+ function reducer(state = [], action) {
     switch (action.type) {
-        case GET_TODOS:
-            return action.todos;
-
         case ADD_TODO:
-            return [...state, action.todo];
+            return [...state, todoReducer(undefined, action)];
 
         case DELETE_TODO:
             const index = state.findIndex(todo => todo.id === action.id);
@@ -45,15 +53,18 @@ export default function reducer(state = [], action) {
     }
 }
 
-export function getFilteredTodos(state, filter) {
+// ***  Selectors *** //
+export function getFilteredTodos(todos, filter) {
     switch (filter) {
         case 'ALL':
-            return state;
+            return todos;
 
         case 'COMPLETED':
-            return state.filter(todo => todo.completed);
+            return todos.filter(todo => todo.completed);
 
         case 'UNCOMPLETED':
-            return state.filter(todo => !todo.completed);
+            return todos.filter(todo => !todo.completed);
     }
 }
+
+export default reducer;

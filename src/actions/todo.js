@@ -1,58 +1,36 @@
-import axios from 'axios';
-
-export const REQUEST_TODOS = 'REQUEST_TODOS';
-export const GET_TODOS = 'GET_TODOS';
 export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
 
-export function getTodos() {
-    return dispatch => {
-        dispatch({
-            type: REQUEST_TODOS
-        });
-
-        return axios.get('api/todos')
-            .then(res => res.data)
-            .then(todos => dispatch({
-                type: GET_TODOS,
-                todos
-            }));
-    }
-}
+let nextId = 5;
 
 export function addTodo(title) {
-    return axios.post('api/todos', { title})
-        .then(res => res.data)
-        .then(todo => ({
-            type: ADD_TODO,
-            todo
-        }));
+    return {
+        type: ADD_TODO,
+        id: nextId++,
+        title
+    };
 }
 
 export function deleteTodo(id) {
-    return axios.delete(`api/todos/${id}`)
-        .then(res => ({
-            type: DELETE_TODO,
-            id
-        }));
+    return {
+        type: DELETE_TODO,
+        id
+    };
 }
 
 export function toggleTodo(id) {
-    return axios.patch(`api/todos/${id}`)
-        .then(res => res.data)
-        .then(todo => ({
-            type: TOGGLE_TODO,
-            todo
-        }));
+    return {
+        type: TOGGLE_TODO,
+        id
+    };
 }
 
 export function editTodo(id, title) {
-    return axios.put(`api/todos/${id}`, { title })
-        .then(res => res.data)
-        .then(todo => ({
-            type: EDIT_TODO,
-            todo
-        }));
+    return {
+        type: EDIT_TODO,
+        id,
+        title
+    };
 }

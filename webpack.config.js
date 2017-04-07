@@ -20,12 +20,6 @@ module.exports = {
         ]
     },
 
-    devServer: {
-        proxy: {
-            '/api': 'http://localhost:3000'
-        }
-    },
-
     devtool: 'inline-source-map',
 
     resolve: {

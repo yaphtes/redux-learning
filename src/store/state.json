@@ -21,6 +21,6 @@
             "completed": false
         }
     ],
-    "filter": "ALL",
-    "fetching": false
+
+    "filter": "ALL"
 }
