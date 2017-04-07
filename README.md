@@ -10,6 +10,11 @@ npm install
 npm start
 ```
 
+## Запустить API
+```bash
+npm run api
+```
+
 ## Перейти по ссылке
 ```
 http://localhost:8080

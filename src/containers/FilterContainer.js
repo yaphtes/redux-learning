@@ -11,10 +11,10 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onSetFilter(filter) {
-            dispatch(setFilter(filter));
-        }
+        onSetFilter: filter => dispatch(setFilter(filter))
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+const FilterContainer = connect(mapStateToProps, mapDispatchToProps)(Filter);
+
+export default FilterContainer;
