@@ -1,21 +1,21 @@
 # ReduxJS introduction
 
-## Установить зависимости
+## Install dependencies
 ```bash
 npm install
 ```
 
-## Запустить проект
+## Start project
 ```bash
 npm start
 ```
 
-## Запустить API
+## Run API
 ```bash
 npm run api
 ```
 
-## Перейти по ссылке
+## Follow the link
 ```
 http://localhost:8080
 ```
