@@ -10,7 +10,7 @@ npm install
 npm start
 ```
 
-## Перейти на
+## Перейти по ссылке
 ```
 http://localhost:8080
 ```
